@@ -1,0 +1,110 @@
+
+David Neilleen Irvinne
+23/517639/PA/22199 
+Nugroho Adi Susanto
+23/520312/PA/22367 
+Muhammad Dhiwaul Akbar
+23/523237/PA/22513 
+
+
+
+@startuml C1_Context_Diagram
+
+!include <C4/C4_Context>
+
+title AnyCademy - Context Diagram
+
+Person(Student, "Pelajar", "Mencari, membandingkan, dan membeli course")
+Person(Instructor, "Pengajar", "Membuat dan mengelola course")
+System(AnyCademy, "AnyCademy", "Platform e-learning untuk kursus online")
+
+System_Ext(PaymentGateway, "Payment Gateway", "Sistem pembayaran pihak ketiga")
+
+Rel(Student, AnyCademy, "Menggunakan untuk:\n- Mencari course\n- Membeli course\n- Melihat progress")
+Rel(Instructor, AnyCademy, "Menggunakan untuk:\n- Membuat course\n- Mengelola konten")
+Rel(AnyCademy, PaymentGateway, "Memproses transaksi pembayaran")
+
+note right of AnyCademy
+  *Epic Terkait*:
+  - Sistem pencarian & pembelian
+  - Sistem otentikasi
+  - Dashboard user
+end note
+
+@enduml
+
+
+
+
+
+
+@startuml C2_Container_Diagram
+
+!include <C4/C4_Container>
+
+title AnyCademy - Container Diagram
+
+System_Boundary(Platform, "AnyCademy") {
+    Container(WebApp, "Web Application", "React/Angular", "Frontend untuk pelajar/pengajar")
+    Container(MobileApp, "Mobile App", "Flutter/React Native", "Akses mobile")
+    Container(BackendAPI, "Backend API", "Node.js/Spring Boot", "Menangani logika bisnis")
+    Container(Database, "Database", "MySQL/MongoDB", "Menyimpan data user, course, transaksi")
+    Container(PaymentService, "Payment Service", "Microservice", "Integrasi dengan payment gateway")
+}
+
+Person(Student, "Pelajar")
+Person(Instructor, "Pengajar")
+System_Ext(PaymentGateway, "Payment Gateway")
+
+Rel(Student, WebApp, "Menggunakan")
+Rel(Student, MobileApp, "Menggunakan")
+Rel(Instructor, WebApp, "Menggunakan")
+Rel(WebApp, BackendAPI, "API calls via REST/GraphQL")
+Rel(MobileApp, BackendAPI, "API calls via REST/GraphQL")
+Rel(BackendAPI, Database, "Membaca/menulis data")
+Rel(BackendAPI, PaymentService, "Menginisiasi pembayaran")
+Rel(PaymentService, PaymentGateway, "Integrasi API")
+
+note left of BackendAPI
+  *Komponen Utama*:
+  - Authentication Module (US-4)
+  - Course Management (US-3)
+  - Search Engine (US-1)
+  - Wishlist Service (US-2)
+  - Progress Tracker (US-5)
+end note
+
+@enduml
+
+
+
+
+
+
+
+@startuml C3_Component_Diagram
+
+!include <C4/C4_Component>
+
+title AnyCademy - Component Diagram (Backend API)
+
+Container_Boundary(BackendAPI, "Backend API") {
+    Component(AuthController, "Authentication Controller", "Menangani registrasi/login (US-4)")
+    Component(CourseController, "Course Controller", "Manajemen course (US-3)")
+    Component(SearchEngine, "Search Engine", "Pencarian & rekomendasi course (US-1)")
+    Component(WishlistService, "Wishlist Service", "Manajemen wishlist (US-2)")
+    Component(ProgressTracker, "Progress Tracker", "Tracking progress belajar (US-5)")
+    Component(PaymentIntegration, "Payment Integration", "Integrasi pembayaran (US-1)")
+}
+
+Database(Database, "Database", "MySQL/MongoDB")
+
+Rel(AuthController, Database, "Menyimpan/validasi data user")
+Rel(CourseController, Database, "CRUD data course")
+Rel(SearchEngine, Database, "Query pencarian")
+Rel(WishlistService, Database, "Menyimpan wishlist")
+Rel(ProgressTracker, Database, "Menyimpan progress")
+Rel(PaymentIntegration, ExternalPayment, "API call ke payment gateway")
+
+@enduml
+

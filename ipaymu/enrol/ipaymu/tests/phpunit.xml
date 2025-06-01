@@ -1,0 +1,11 @@
+<phpunit bootstrap="bootstrap.php">
+    <testsuites>
+        <testsuite name="enrol_ipaymu_testsuite">
+            <directory suffix="_test.php">.</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <ini name="display_errors" value="1"/>
+        <ini name="display_startup_errors" value="1"/>
+    </php>
+</phpunit>

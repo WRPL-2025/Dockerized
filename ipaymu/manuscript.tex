@@ -1,0 +1,199 @@
+\documentclass{article} % Or use 'report' or 'book' class
+
+% --- PACKAGES ---
+\usepackage{amsmath} % For math equations
+\usepackage{graphicx} % To include images
+\usepackage[utf8]{inputenc} % Input encoding
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{hyperref} % For hyperlinks (optional)
+\usepackage{geometry} % For page layout (optional)
+\geometry{a4paper, margin=1in} % Example page layout
+\usepackage[backend=biber, style=ieee]{biblatex} % Using biblatex with biber backend and IEEE style
+\addbibresource{references.bib} % Specify your .bib file (ensure this file exists)
+
+% --- DOCUMENT INFORMATION ---
+\title{Development and Implementation of iPaymu Payment Gateway Plugin for Moodle}
+\author{Nugroho Adi Susanto(23/520312/PA/22367)\textsuperscript{1}, \\ muhammad dhiwaul akbar(23/523237/PA/22513)\textsuperscript{2}, \\ David Neilleen Irvinne(23/517639/PA/22199)\textsuperscript{3} 
+}
+\date{\today}
+
+% --- DOCUMENT START ---
+\begin{document}
+
+\maketitle % Display title, author, date
+
+\begin{abstract}
+    This report details the development and implementation of the iPaymu Payment Gateway Plugin for Moodle, a comprehensive solution for integrating payment processing into the Moodle learning management system. The plugin enables seamless course enrollment through various payment methods including virtual accounts, QRIS, paylater, e-wallet, retail outlets, and credit cards. The implementation follows Moodle's plugin architecture standards and provides a robust, secure, and user-friendly payment integration. Key features include automated enrollment upon successful payment, transaction status tracking, and support for multiple payment methods. The project successfully bridges the gap between online education and digital payment systems in Indonesia.
+\end{abstract}
+
+\tableofcontents % Generate Table of Contents
+\newpage
+
+% --- MAIN SECTIONS ---
+
+\section{Introduction}
+    % Provide background information on the project topic.
+    % State the problem or research question being addressed.
+    % Outline the project's objectives and scope.
+    % Briefly mention the structure of the report.
+    The iPaymu Payment Gateway Plugin for Moodle represents a significant advancement in the integration of digital payment systems with educational platforms. This project addresses the growing need for secure and efficient payment processing in online education, particularly in the Indonesian market. The plugin enables educational institutions to monetize their courses while providing students with a seamless payment experience.
+
+    The core problem addressed by this project is the lack of a comprehensive payment solution for Moodle that supports Indonesian payment methods and currencies. The specific objectives of this project were:
+    \begin{enumerate}
+        \item To develop a secure and reliable payment gateway plugin for Moodle
+        \item To integrate multiple Indonesian payment methods
+        \item To implement automated course enrollment upon successful payment
+        \item To provide comprehensive transaction tracking and management
+        \item To ensure compliance with Moodle's plugin architecture standards
+    \end{enumerate}
+
+    The scope of this project encompasses the development of a complete payment gateway solution, including frontend integration, backend processing, and administrative controls. This report details the technical implementation, features, and outcomes of the project.
+
+\section{Methodology}
+    % Describe the methods, tools, techniques, and procedures used in the project.
+    % Explain the experimental setup, data collection methods, algorithms, or development process.
+    % Be detailed enough for someone else to replicate your work.
+    The development of the iPaymu Payment Gateway Plugin followed Moodle's plugin development best practices and utilized the following technologies and approaches:
+
+    \subsection{Development Environment}
+    The plugin was developed using:
+    \begin{itemize}
+        \item PHP 7.4+ for backend implementation
+        \item Moodle 3.11+ as the target platform
+        \item iPaymu API for payment processing
+        \item MySQL for transaction storage
+        \item Git for version control
+    \end{itemize}
+
+    \subsection{Plugin Architecture}
+    The plugin follows Moodle's standard enrollment plugin architecture, implementing:
+    \begin{itemize}
+        \item Custom enrollment plugin class extending \texttt{enrol\_plugin}
+        \item Integration with Moodle's enrollment management system
+        \item Secure payment processing through iPaymu's API
+        \item Transaction status tracking and management
+    \end{itemize}
+
+    \subsection{Implementation Process}
+    The development process included:
+    \begin{enumerate}
+        \item Requirements analysis and specification
+        \item Plugin architecture design
+        \item Core functionality implementation
+        \item Payment gateway integration
+        \item Testing and validation
+        \item Documentation and deployment
+    \end{enumerate}
+
+\section{Results}
+    % Present the findings of your project objectively.
+    % Use figures, tables, charts, and code snippets where appropriate.
+    % Do not interpret the results here; just report what you found.
+    The implementation resulted in a fully functional payment gateway plugin with the following key features:
+
+    \subsection{Payment Methods}
+    The plugin successfully integrated multiple payment methods:
+    \begin{itemize}
+        \item Virtual Accounts
+        \item QRIS Payments
+        \item Paylater Options
+        \item E-wallet Integration
+        \item Retail Outlet Payments
+        \item Credit Card Processing
+    \end{itemize}
+
+    \subsection{Core Functionality}
+    The plugin provides:
+    \begin{itemize}
+        \item Automated course enrollment upon successful payment
+        \item Real-time payment status tracking
+        \item Secure transaction processing
+        \item Comprehensive admin controls
+        \item Multi-currency support (IDR)
+    \end{itemize}
+
+    \subsection{Technical Implementation}
+    Key technical achievements include:
+    \begin{itemize}
+        \item Successful integration with Moodle's enrollment system
+        \item Secure API communication with iPaymu
+        \item Robust error handling and logging
+        \item Efficient transaction management
+        \item User-friendly interface
+    \end{itemize}
+
+
+\section{Discussion}
+    % Interpret the results presented in the previous section.
+    % Relate your findings back to the objectives and research questions.
+    % Compare your results with existing literature or previous work.
+    % Discuss any limitations of your study or project.
+    % Suggest implications of your findings.
+    The implementation of the iPaymu Payment Gateway Plugin successfully addresses the initial objectives and provides a robust solution for Moodle payment processing. Key findings include:
+
+    \subsection{Integration Success}
+    The plugin seamlessly integrates with Moodle's enrollment system, providing a smooth user experience while maintaining security and reliability. The implementation follows Moodle's plugin architecture standards, ensuring compatibility and maintainability.
+
+    \subsection{Payment Processing}
+    The integration with iPaymu's API enables secure and efficient payment processing, supporting multiple payment methods commonly used in Indonesia. The system successfully handles transaction status updates and automated enrollment.
+
+    \subsection{Limitations and Considerations}
+    \begin{itemize}
+        \item Currency support is currently limited to IDR
+        \item Payment methods are specific to the Indonesian market
+        \item Requires active internet connection for payment processing
+    \end{itemize}
+
+\section{Conclusion}
+    % Summarize the main findings and contributions of the project.
+    % Reiterate the answers to the research questions or how objectives were met.
+    % Briefly mention potential future work or recommendations.
+    The iPaymu Payment Gateway Plugin for Moodle successfully provides a comprehensive solution for integrating payment processing into the Moodle platform. The implementation meets all initial objectives and provides a robust, secure, and user-friendly payment integration.
+
+    Key contributions include:
+    \begin{itemize}
+        \item Development of a complete payment gateway solution
+        \item Integration of multiple Indonesian payment methods
+        \item Automated enrollment system
+        \item Comprehensive transaction management
+    \end{itemize}
+
+    Future work could explore:
+    \begin{itemize}
+        \item Expansion to additional currencies
+        \item Integration of more international payment methods
+        \item Enhanced reporting and analytics features
+        \item Mobile-optimized payment interface
+    \end{itemize}
+
+% --- REFERENCES ---
+\section*{References}
+    % List all the sources cited in your report.
+    % Use a consistent citation style (e.g., APA, MLA, IEEE).
+    % Using BibTeX/BibLaTeX is highly recommended for managing references.
+    % If using biblatex:
+    \printbibliography % This command prints the bibliography generated from references.bib
+    % If using traditional BibTeX:
+    % \bibliographystyle{plain} % Or another style like 'apalike', 'ieeetr'
+    % \bibliography{references} % Assumes you have a references.bib file
+
+    % Manual bibliography example (not recommended for large projects):
+    % \begin{thebibliography}{9}
+    %     \bibitem{key1} Author(s), Title, Journal/Conference, Year. (Example citation key)
+    %     \bibitem{key2} ...
+    % \end{thebibliography}
+    % Ensure you have a 'references.bib' file in the same directory
+    % and add entries like:
+    % @article{key1,
+    %   author = {Author, First},
+    %   title = {Title of Work},
+    %   journal = {Journal Name},
+    %   year = {Year},
+    %   volume = {Volume},
+    %   pages = {Pages},
+    % }
+
+% --- APPENDIX (Optional) ---
+\appendix
+
+\end{document}
