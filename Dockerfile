@@ -30,11 +30,14 @@ ENV MOODLE_DATABASE_PASSWORD=$MYSQL_PASSWORD \
 # Copy the iPaymu plugin into Moodle's enrol directory
 COPY ipaymu /opt/bitnami/moodle/enrol/ipaymu
 
-# Create directory for MariaDB data
+# Create directory for MariaDB data and socket directory
 RUN mkdir -p /bitnami/mariadb && \
     chown -R 1001:1001 /bitnami/mariadb && \
     mkdir -p /docker-entrypoint-initdb.d && \
     chown -R 1001:1001 /docker-entrypoint-initdb.d && \
+    mkdir -p /run/mysqld && \
+    chown -R 1001:1001 /run/mysqld && \
+    chmod 1777 /run/mysqld && \
     chmod -R 775 /bitnami/mariadb
 
 # Configure supervisor

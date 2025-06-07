@@ -1,6 +1,8 @@
 services:
   mariadb:
     image: bitnami/mariadb:latest
+    tmpfs:
+      - /run/mysqld:rw,mode=1777
     environment:
       - MARIADB_ROOT_PASSWORD=Root123#!
       - MARIADB_DATABASE=bitnami_moodle
