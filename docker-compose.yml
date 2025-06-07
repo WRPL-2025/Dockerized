@@ -13,15 +13,16 @@ services:
     ports:
       - "8081:8080"
     environment:
-      - MOODLE_DATABASE_HOST=mariadb
-      - MOODLE_DATABASE_NAME=bitnami_moodle
-      - MOODLE_DATABASE_USER=root
-      - MOODLE_DATABASE_PASSWORD=Root123#!
-      - MOODLE_USERNAME=admin        # ← your chosen admin name
-      - MOODLE_PASSWORD=Admin123!   # ← secure admin password (min 8 chars, include letters, numbers, symbols)
-      - MOODLE_EMAIL=you@example.com # ← your email address
-      - MOODLE_SITE_NAME=My Moodle Site # ← your site name
-      - BITNAMI_DEBUG=true
+      MOODLE_DATABASE_HOST: "mariadb"
+      MOODLE_DATABASE_NAME: "bitnami_moodle"
+      MOODLE_DATABASE_USER: "root"
+      MOODLE_DATABASE_PASSWORD: "Root123#!"
+      ALLOW_EMPTY_PASSWORD: "yes"
+      MOODLE_USERNAME: "admin"
+      MOODLE_PASSWORD: "Admin123!"
+      MOODLE_EMAIL: "you@example.com"
+      MOODLE_SITE_NAME: "My Moodle Site"
+      BITNAMI_DEBUG: "true"
     volumes:
       - moodle_data:/bitnami/moodle
       - apache_data:/bitnami/apache
