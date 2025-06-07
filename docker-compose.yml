@@ -16,7 +16,7 @@ services:
       - MOODLE_DATABASE_HOST=mariadb
       - MOODLE_DATABASE_NAME=bitnami_moodle
       - MOODLE_DATABASE_USER=root
-      - MOODLE_DATABASE_PASSWORD=
+      - MOODLE_DATABASE_PASSWORD=Root123#!
       - ALLOW_EMPTY_PASSWORD=yes
       - MOODLE_USERNAME=admin        # ← your chosen admin name
       - MOODLE_PASSWORD=Admin123!   # ← secure admin password (min 8 chars, include letters, numbers, symbols)
