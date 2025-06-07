@@ -3,16 +3,17 @@
 FROM bitnami/moodle:latest
 
 # Default environment variables for Railway deployments
-ENV MOODLE_DATABASE_HOST=mariadb \
-    MOODLE_DATABASE_NAME=bitnami_moodle \
-    MOODLE_DATABASE_USER=root \
-    MOODLE_DATABASE_PASSWORD=Root123#! \
-    ALLOW_EMPTY_PASSWORD=yes \
-    MOODLE_USERNAME=admin \
-    MOODLE_PASSWORD=Admin123! \
-    MOODLE_EMAIL=you@example.com \
-    MOODLE_SITE_NAME="My Moodle Site" \
-    BITNAMI_DEBUG=true
+ENV MOODLE_DATABASE_HOST=${MYSQL_HOST} \
+    MOODLE_DATABASE_PORT=${MYSQL_PORT} \
+    MOODLE_DATABASE_NAME=${MYSQL_DATABASE} \
+    MOODLE_DATABASE_USER=${MYSQL_USER} \
+    MOODLE_DATABASE_PASSWORD=${MYSQL_PASSWORD} \
+    ALLOW_EMPTY_PASSWORD=no \
+    MOODLE_USERNAME=${MOODLE_ADMIN_USERNAME:-admin} \
+    MOODLE_PASSWORD=${MOODLE_ADMIN_PASSWORD:-Admin123!} \
+    MOODLE_EMAIL=${MOODLE_ADMIN_EMAIL:-you@example.com} \
+    MOODLE_SITE_NAME=${MOODLE_SITE_NAME:-"My Moodle Site"} \
+    BITNAMI_DEBUG=${BITNAMI_DEBUG:-false}
 
 # Copy the iPaymu plugin into Moodle's enrol directory
 COPY ipaymu /opt/bitnami/moodle/enrol/ipaymu
