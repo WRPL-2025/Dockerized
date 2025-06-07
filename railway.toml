@@ -1,0 +1,10 @@
+# railway.toml configuration
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+numReplicas = 1
+restartPolicyMaxRetries = 5
+
+# Environment variables will be set through the Railway dashboard

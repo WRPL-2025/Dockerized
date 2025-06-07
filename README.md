@@ -1,13 +1,15 @@
 # Moodle iPaymu Docker Image
 
-A Docker image for [Moodle](https://moodle.org/) with the iPaymu enrolment plugin pre-installed. This image extends the official `bitnami/moodle` container and enables seamless integration of the iPaymu payment gateway for course enrolments.
+A Docker image for [Moodle](https://moodle.org/) with the iPaymu enrolment plugin pre-installed. This image extends the official `bitnami/moodle` container and enables seamless integration of the iPaymu payment gateway for course enrolments. The image is optimized for deployment on Railway with a single-container configuration.
 
 ## Features
 - Based on `bitnami/moodle:latest` for a secure, production-ready Moodle setup.
 - Includes the `enrol/ipaymu` plugin under `/opt/bitnami/moodle/enrol/ipaymu`.
 - Configurable via environment variables for database connection and site setup.
-- Persists data using Docker volumes: Moodle data and Apache logs.
-- Exposes port `8080` for the Moodle web interface.
+- Includes MariaDB database server in the same container for single-container deployment.
+- Railway-optimized with automatic port configuration.
+- Persists data using Docker volumes: Moodle data, MariaDB data and Apache logs.
+- Exposes configurable port (default: 8080) for the Moodle web interface.
 
 ## Supported tags
 - `latest` : Built from `bitnami/moodle:latest` with iPaymu plugin installed.
@@ -87,6 +89,27 @@ volumes:
 - `/bitnami/apache` — Apache configuration and logs
 
 ## Exposed Ports
-- `8080` — Moodle web interface
+- `8080` — Moodle web interface (or Railway's assigned port)
+
+## Railway Deployment
+This container is specifically optimized for Railway deployment with a single-container design.
+
+1. Create a new Railway project and connect your GitHub repository
+2. Set the following environment variables:
+   ```
+   MOODLE_DATABASE_NAME=moodle
+   MOODLE_DATABASE_USER=moodle
+   MOODLE_DATABASE_PASSWORD=your-secure-password
+   MOODLE_USERNAME=admin
+   MOODLE_PASSWORD=your-secure-admin-password
+   MOODLE_EMAIL=your-email@example.com
+   MOODLE_SITE_NAME=Your Moodle Site
+   ```
+3. Deploy the project
+
+Railway will automatically:
+- Assign a port and make it available through the `PORT` environment variable
+- Provide persistent storage for both Moodle and MariaDB data
+- Set up SSL/TLS for secure access
 
 For more information about the iPaymu plugin, refer to the [ipaymu documentation](https://your-plugin-docs-url.example).
